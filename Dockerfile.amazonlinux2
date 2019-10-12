@@ -1,0 +1,19 @@
+FROM amazonlinux:2
+ENV HOME /
+RUN yum update -y && yum install -y rpm-build redhat-rpm-config rpmdevtools make gcc-c++ tar gzip git
+
+# Install Golang
+ENV GOLANG_VERSION="1.13.1" GOLANG_SHA256="94f874037b82ea5353f4061e543681a0e79657f787437974214629af8407d124"
+RUN curl -sSL "https://storage.googleapis.com/golang/go$GOLANG_VERSION.linux-amd64.tar.gz" -o /tmp/golang.tar.gz \
+    && echo "$GOLANG_SHA256 /tmp/golang.tar.gz" | sha256sum -c - \
+    && tar -xzf /tmp/golang.tar.gz -C /usr/local \
+    && rm -fr /tmp/*
+ENV PATH="/usr/local/go/bin:$PATH"
+
+RUN rpmdev-setuptree
+ADD ./rpmbuild/ /rpmbuild/
+RUN chown -R root:root /rpmbuild
+RUN rpmbuild -ba /rpmbuild/SPECS/amazon-kinesis-firehose-for-fluent-bit.spec
+RUN tar -czf /tmp/amazon-kinesis-firehose-for-fluent-bit.tar.gz -C /rpmbuild RPMS SRPMS
+
+CMD ["/bin/true"]
