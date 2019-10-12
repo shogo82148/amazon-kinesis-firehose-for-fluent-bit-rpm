@@ -18,5 +18,5 @@ deploy:
   - provider: bintray
     user: shogo82148
     key: '$BINTRAY_API_KEY'
-    file: ./bintray/bintray-amazon-kinesis-firehose-for-fluent-bit-rpm.json
+    file: ./bintray/bintray-amazon-kinesis-firehose-for-fluent-bit.json
     skip_cleanup: true
