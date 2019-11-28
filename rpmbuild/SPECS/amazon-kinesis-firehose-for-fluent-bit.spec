@@ -16,7 +16,7 @@ A Fluent Bit output plugin for Amazon Kinesis Firehose
 %build
 rm -fr %{buildroot}
 git clone --depth 10 https://github.com/aws/amazon-kinesis-firehose-for-fluent-bit.git
-git -C amazon-kinesis-firehose-for-fluent-bit checkout 0883cb76f5116b192adf0485b095050675486165
+git -C amazon-kinesis-firehose-for-fluent-bit checkout -f "v1.0.0"
 make -C amazon-kinesis-firehose-for-fluent-bit release
 
 %install
