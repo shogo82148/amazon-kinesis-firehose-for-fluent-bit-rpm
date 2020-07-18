@@ -35,6 +35,7 @@ rm -fr %{buildroot}
 %changelog
 * Sat Jul 18 2020 Ichinose Shogo <shogo82148@gmail.com> - 1.3.0-1
 - bump up to v1.3.0
+- update Go to 1.14.6
 
 * Sun Jun 14 2020 Ichinose Shogo <shogo82148@gmail.com> - 1.2.1-1
 - bump up to v1.2.1
