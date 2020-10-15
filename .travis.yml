@@ -20,3 +20,7 @@ deploy:
     key: '$BINTRAY_API_KEY'
     file: ./bintray/bintray-amazon-kinesis-firehose-for-fluent-bit.json
     skip_cleanup: true
+    cleanup: false
+    skip_cleanup: true
+    on:
+      branch: main
