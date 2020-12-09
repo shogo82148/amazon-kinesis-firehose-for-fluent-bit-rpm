@@ -1,6 +1,6 @@
 Summary: A Fluent Bit output plugin for Amazon Kinesis Firehose
 Name: amazon-kinesis-firehose-for-fluent-bit
-Version: 1.4.2
+Version: 1.5.0
 Release: 1%{?dist}
 URL: https://github.com/aws/amazon-kinesis-firehose-for-fluent-bit
 License: Apache v2.0
@@ -16,7 +16,7 @@ A Fluent Bit output plugin for Amazon Kinesis Firehose
 %build
 rm -fr %{buildroot}
 git clone https://github.com/aws/amazon-kinesis-firehose-for-fluent-bit.git
-git -C amazon-kinesis-firehose-for-fluent-bit checkout -f "v1.4.2"
+git -C amazon-kinesis-firehose-for-fluent-bit checkout -f "v1.5.0"
 make -C amazon-kinesis-firehose-for-fluent-bit release
 
 %install
@@ -33,6 +33,10 @@ rm -fr %{buildroot}
 /usr/local/lib/fluent-bit/firehose.so
 
 %changelog
+* Thu Oct 22 2020 Ichinose Shogo <shogo82148@gmail.com> - 1.5.0-1
+- bump up to v1.5.0
+- bump up Go to v1.15.6
+
 * Thu Oct 22 2020 Ichinose Shogo <shogo82148@gmail.com> - 1.4.2-1
 - bump up to v1.4.2
 - bump up Go to v1.15.3
